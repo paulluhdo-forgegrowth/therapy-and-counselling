@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PRIMARY META (SEO theme: "Counselling psychologist in Edenvale") -->
+  <title>Counselling Psychologist in Edenvale &amp; Online | Therapy &amp; Counselling</title>
+  <meta name="description" content="Compassionate, professional counselling for individuals and couples in Edenvale and online. Confidential support for anxiety, stress, grief, relationships and more. Book a session with Kim van Zeeventer." />
+  <!-- TODO(confirm): final production domain before launch -->
+  <link rel="canonical" href="https://www.therapyandcounselling.co.za/" />
+
+  <!-- Open Graph / social (image placeholder — supply before launch) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Counselling in Edenvale &amp; Online | Therapy &amp; Counselling" />
+  <meta property="og:description" content="Compassionate, professional counselling for individuals and couples in Edenvale and online." />
+  <meta property="og:url" content="https://www.therapyandcounselling.co.za/" />
+  <!-- <meta property="og:image" content="https://www.therapyandcounselling.co.za/assets/social-share.jpg" /> -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://www.therapyandcounselling.co.za/assets/images/og-home.webp" />
+  <meta name="twitter:image" content="https://www.therapyandcounselling.co.za/assets/images/og-home.webp" />
+  <meta name="theme-color" content="#FAF6EF" />
+
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo/therapy-favicon.svg" />
+  <link rel="preload" as="image" href="assets/images/hero-room.webp" fetchpriority="high" />
+
+  <!-- Fonts: Geist (FW-002 §15). Falls back to system sans. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Display headings: Fraunces. Body/UI: Geist. -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!--
+    NOTE ON SCHEMA: LocalBusiness / professional schema is intentionally NOT
+    included yet. Per FW-002 §18, add it only once professional and business
+    details (HPCSA wording, practice number, hours, address) are confirmed.
+  -->
+  <!-- Restrained JSON-LD (no fabricated HPCSA/practice number, pricing or memberships).
+       Confirm address & hours before launch. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Therapy and Counselling",
+    "description": "Counselling for individuals and couples in Edenvale and online.",
+    "url": "https://www.therapyandcounselling.co.za/",
+    "image": "https://www.therapyandcounselling.co.za/assets/images/og-home.webp",
+    "telephone": "+27722020901",
+    "email": "therapyandcounselling4u@gmail.com",
+    "address": { "@type": "PostalAddress", "streetAddress": "11 Columbus Avenue, Eastleigh", "addressLocality": "Edenvale", "addressRegion": "Gauteng", "addressCountry": "ZA" },
+    "areaServed": "Edenvale, Johannesburg and online",
+    "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================================================ HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Therapy and Counselling — home">
+          <img class="brand__logo" src="assets/logo/therapy-logo-primary.svg" width="980" height="270" alt="" />
+          <img class="brand__icon" src="assets/logo/therapy-logo-icon.svg" width="130" height="150" alt="" />
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About Kim</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#workshops">Workshops</a></li>
+          <li><a href="#book">Contact</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <a class="nav__phone" href="tel:+27722020901" aria-label="Call the practice">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 2 6a2 2 0 0 1 2-2z"/></g></svg>
+            072 202 0901
+          </a>
+          <a class="btn btn-primary" href="#book">Book a Session</a>
+          <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+    <div class="drawer__head">
+      <img class="drawer__logo" src="assets/logo/therapy-logo-icon.svg" width="130" height="150" alt="Therapy and Counselling" />
+      <button class="drawer__close" id="drawerClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="drawer__links" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Kim</a>
+      <a href="services.html">Services</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#book">Contact</a>
+    </nav>
+    <a class="btn btn-primary btn-block" href="#book">Book a Session</a>
+    <div class="drawer__contact">
+      <a href="tel:+27722020901">Call 072 202 0901</a>
+      <a href="mailto:therapyandcounselling4u@gmail.com">Email the practice</a>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ============================================================ HERO (immersive, overlapping) -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__stage">
+          <div class="hero__content reveal">
+            <p class="eyebrow">Counselling in Edenvale &amp; Online</p>
+            <h1 class="h1">A Safe Space for Growth, Connection and Healing.</h1>
+            <p class="lede hero__lede">
+              Compassionate, professional counselling for individuals and couples in Edenvale and online.
+              Work through life's challenges with support that is confidential, practical and centred around you.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn-primary btn-lg" href="#book">Book a Session</a>
+              <a class="btn btn-secondary btn-lg" href="services.html">Explore Counselling Services</a>
+            </div>
+            <p class="hero__reassure">
+              Confidential support <span class="dot" aria-hidden="true"></span>
+              In-person and online <span class="dot" aria-hidden="true"></span>
+              Individual and couples counselling
+            </p>
+          </div>
+          <div class="hero__figure reveal">
+            <!-- Hero photograph (supplied). Not lazy-loaded — it's the LCP image. -->
+            <div class="media media--hero">
+              <img src="assets/images/hero-room.webp" width="1000" height="1000" alt="A calm, light interior with soft neutral tones" fetchpriority="high" decoding="async" />
+            </div>
+            <span class="hero__chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2 1.4 2.4-.2.9 2.2 2.1 1.3-.7 2.3.7 2.3-2.1 1.3-.9 2.2-2.4-.2L12 21l-2-1.4-2.4.2-.9-2.2-2.1-1.3.7-2.3-.7-2.3 2.1-1.3.9-2.2 2.4.2z"/><path d="M9 12l2 2 4-4"/></svg>
+              Registered psychologist
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ TRUST STRIP (verified signals only — FW-002 §12) -->
+    <section class="trust" aria-label="About the practice">
+      <div class="container">
+        <ul class="trust__row">
+          <li class="trust__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 1.4 2.4-.2.9 2.2 2.1 1.3-.7 2.3.7 2.3-2.1 1.3-.9 2.2-2.4-.2L12 21l-2-1.4-2.4.2-.9-2.2-2.1-1.3.7-2.3-.7-2.3 2.1-1.3.9-2.2 2.4.2z"/><path d="M9 12l2 2 4-4"/></svg>
+            Registered counselling psychologist
+          </li>
+          <li class="trust__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c0 1 2.5 2.5 5 2.5s5-1.5 5-2.5v-5"/></svg>
+            Master's degree in psychology
+          </li>
+          <li class="trust__item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></g></svg>
+            Practising since 2010
+          </li>
+          <li class="trust__item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></svg>
+            In-person &amp; online sessions
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ COUNSELLING SERVICES -->
+    <section class="section" id="services-preview" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Counselling Services</p>
+          <h2 class="h2" id="services-title">Support for the challenges you're facing</h2>
+          <p class="lede u-center">Whether you're navigating something on your own or working through it together, there's a space here for you.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card reveal">
+            <span class="card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></g></svg></span>
+            <h3 class="h3">Individual Counselling</h3>
+            <p>A supportive space to work through anxiety, stress, grief, trauma, burnout, life changes and relationship difficulties at a pace that feels manageable.</p>
+            <a class="textlink" href="services.html#individual">Explore Individual Counselling
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M10.5 20a5.5 5.5 0 0 1 11 0"/></g></svg></span>
+            <h3 class="h3">Couples Counselling</h3>
+            <p>Practical, supportive counselling to help couples understand conflict patterns, communicate more clearly and rebuild connection.</p>
+            <a class="textlink" href="services.html#couples">Explore Couples Counselling
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v6h6v4h-6v8h-4v-8H4V9h6z"/></g></svg></span>
+            <h3 class="h3">Christian Counselling</h3>
+            <p>Faith-sensitive counselling for clients who would like to include Christian beliefs and spiritual questions in the process. Entirely optional.</p>
+            <a class="textlink" href="services.html#christian">Explore Christian Counselling
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ ABOUT KIM PREVIEW (with timeline) -->
+    <section class="section section--surface" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about">
+          <div class="about__media reveal">
+            <!-- Portrait of Kim (supplied; converted from PNG to WebP). -->
+            <div class="media media--portrait">
+              <img src="assets/images/kim-portrait.webp" width="1122" height="1402" alt="Kim van Zeeventer, registered counselling psychologist" loading="lazy" decoding="async" />
+            </div>
+            <div class="about__badge" style="display:flex;align-items:center;gap:12px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:24px;height:24px;color:var(--sage-dark);flex:none"><path d="M12 3l2 1.4 2.4-.2.9 2.2 2.1 1.3-.7 2.3.7 2.3-2.1 1.3-.9 2.2-2.4-.2L12 21l-2-1.4-2.4.2-.9-2.2-2.1-1.3.7-2.3-.7-2.3 2.1-1.3.9-2.2 2.4.2z"/><path d="M9 12l2 2 4-4"/></svg>
+              <span class="lbl">Registered counselling psychologist</span>
+            </div>
+          </div>
+          <div class="about__content">
+            <p class="eyebrow">About Kim</p>
+            <h2 class="h2" id="about-title">Professional Support With a Human Approach</h2>
+            <p style="margin-top:var(--s5)">Kim van Zeeventer is a registered counselling psychologist based in Edenvale. Her background in nursing and psychology, together with experience supporting individuals and couples, informs a practical, compassionate approach to counselling.</p>
+            <p style="margin-top:var(--s4)">Kim also facilitates couples workshops informed by Gottman relationship principles.</p>
+
+            <!-- Career timeline. Years/qualifications drawn from the current site as initial source;
+                 all are flagged for confirmation before launch (CONTENT-QUESTIONS §1). -->
+            <ol class="timeline">
+              <li class="timeline__item">
+                <span class="timeline__year">Earlier career</span>
+                <p class="timeline__title">A background in nursing</p>
+                <p class="timeline__desc">A first career in nursing, including neonatal care.</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2009</span>
+                <p class="timeline__title">Master's in psychology</p>
+                <p class="timeline__desc">Completed at the University of Johannesburg.</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2010</span>
+                <p class="timeline__title">Registered psychologist</p>
+                <p class="timeline__desc">Registered following the HPCSA board examination.</p>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2017–2020</span>
+                <p class="timeline__title">Practising in Doha, Qatar</p>
+                <p class="timeline__desc">Several years supporting clients internationally.</p>
+              </li>
+              <li class="timeline__item is-now">
+                <span class="timeline__year">Today</span>
+                <p class="timeline__title">Private practice in Edenvale</p>
+                <p class="timeline__desc">Individual and couples counselling, plus Gottman-informed workshops.</p>
+              </li>
+            </ol>
+
+            <a class="btn btn-secondary" href="about.html">Meet Kim
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ HOW COUNSELLING WORKS -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">How Counselling Works</p>
+          <h2 class="h2" id="how-title">Getting started is simple</h2>
+          <p class="lede u-center">Reaching out is often the hardest part. Here's what to expect from the first contact onward.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal"><div class="step__num" aria-hidden="true">1</div><h3 class="h4">Get in Touch</h3><p>Send a message, call, or complete the enquiry form — whatever feels most comfortable.</p></li>
+          <li class="step reveal"><div class="step__num" aria-hidden="true">2</div><h3 class="h4">Initial Conversation</h3><p>We discuss the support you're looking for and whether the practice is a suitable fit.</p></li>
+          <li class="step reveal"><div class="step__num" aria-hidden="true">3</div><h3 class="h4">Your First Session</h3><p>You begin exploring your concerns in a confidential and supportive environment.</p></li>
+          <li class="step reveal"><div class="step__num" aria-hidden="true">4</div><h3 class="h4">Ongoing Support</h3><p>We continue at an agreed pace, reviewing goals together as counselling progresses.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ COUPLES WORKSHOP FEATURE -->
+    <section class="section section--warm" id="workshops" aria-labelledby="workshop-title">
+      <div class="container">
+        <div class="workshop">
+          <div class="workshop__media reveal">
+            <!-- Workshop photograph (supplied). NOTE: source is only 365×365 — a higher-resolution
+                 version is recommended before launch, as it upscales at this display size. -->
+            <div class="media media--wide">
+              <img src="assets/images/workshop.webp" width="365" height="365" alt="A warm, supportive counselling session" loading="lazy" decoding="async" />
+            </div>
+            <span class="workshop__chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></svg>
+              In-person &amp; online
+            </span>
+            <!-- Gottman "Leader" seal — reflects Kim's confirmed Gottman Institute workshop-leader training (FW-002 §2). -->
+            <span class="workshop__seal">
+              <img src="assets/images/gottman-leader-badge.webp" width="400" height="318"
+                   alt="Leader — The Seven Principles for Making Marriage Work, The Gottman Institute" loading="lazy" decoding="async" />
+            </span>
+          </div>
+
+          <div class="workshop__content stack reveal">
+            <p class="eyebrow">Couples Workshops</p>
+            <h2 class="h2" id="workshop-title">Strengthen Your Relationship With Practical Tools</h2>
+            <p>Couples workshops offer structured, practical guidance based on established relationship principles. They help couples better understand damaging patterns, improve communication and create healthier ways of working through challenges.</p>
+            <p class="muted">Available in selected Johannesburg locations and online.</p>
+
+            <!-- EDITABLE EVENT BLOCK — FW-002 §11.
+                 No confirmed workshop date is set, so the neutral enquiry message is shown.
+                 When a workshop is scheduled, replace the message with the <dl> template below. -->
+            <div class="event-card">
+              <span class="event-card__tag">Upcoming workshop</span>
+              <h3 class="h4" style="margin-bottom:var(--s3)">Dates announced as they're scheduled</h3>
+              <p class="muted">Contact the practice for upcoming workshop dates, venues and availability — in Edenvale, selected Johannesburg locations, or online.</p>
+              <p class="note">Workshops are intensive and booking is essential.</p>
+              <!-- WHEN A DATE IS CONFIRMED, use this structure (and remove the message above):
+              <dl>
+                <dt>Date</dt><dd>[e.g. Saturday 12 July]</dd>
+                <dt>Time</dt><dd>[e.g. 09:00–15:00]</dd>
+                <dt>Venue</dt><dd>[Edenvale / Lonehill / Online]</dd>
+                <dt>Availability</dt><dd>[e.g. Limited places]</dd>
+                <dt>Booking</dt><dd>[How to book]</dd>
+              </dl>
+              -->
+            </div>
+
+            <div class="hero__cta">
+              <a class="btn btn-primary" href="#book">Ask About the Next Workshop</a>
+              <a class="btn btn-secondary" href="#book">Request Workshop Information</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ WHY CLIENTS FEEL COMFORTABLE -->
+    <section class="section" aria-labelledby="comfort-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">A space that feels safe</p>
+          <h2 class="h2" id="comfort-title">Why clients feel comfortable here</h2>
+        </div>
+
+        <div class="grid grid-3" style="gap:var(--s7) var(--s6)">
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></g></svg></span>
+            <div><h3>Confidential &amp; private</h3><p>What you share stays between us, within recognised professional and ethical guidelines.</p></div>
+          </div>
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.4-9A5 5 0 0 1 12 6.2 5 5 0 0 1 21.4 12C19 16.5 12 21 12 21z"/></g></svg></span>
+            <div><h3>Warm &amp; non-judgemental</h3><p>You'll be met with respect and understanding, wherever you're starting from.</p></div>
+          </div>
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></svg></span>
+            <div><h3>In-person or online</h3><p>Meet in Edenvale, or from wherever you feel most at ease.</p></div>
+          </div>
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></svg></span>
+            <div><h3>At a pace that suits you</h3><p>There's no pressure. We move at a pace that feels manageable for you.</p></div>
+          </div>
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v6h6v4h-6v8h-4v-8H4V9h6z"/></g></svg></span>
+            <div><h3>Faith included, if you wish</h3><p>Christian counselling is available for those who want it — always optional.</p></div>
+          </div>
+          <div class="value reveal">
+            <span class="value__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M10.5 20a5.5 5.5 0 0 1 11 0"/></g></svg></span>
+            <div><h3>Individuals &amp; couples</h3><p>Support whether you're coming on your own or together.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ FAQ -->
+    <section class="section section--surface" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Questions</p>
+          <h2 class="h2" id="faq-title">Frequently asked questions</h2>
+        </div>
+
+        <div class="faq" id="faq">
+          <details class="faq__item">
+            <summary>What can counselling help with? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>Counselling can support you with many of life's challenges — including anxiety, stress, low mood, grief, trauma, burnout, major life changes and relationship difficulties. If you're unsure whether counselling is right for your situation, you're welcome to get in touch and ask.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Do you offer online counselling? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>Yes. Sessions are available both in person in Edenvale and online, so you can choose whichever feels more comfortable and convenient for you.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Do you work with both individuals and couples? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>Yes. The practice offers individual counselling as well as couples counselling, and also runs structured couples workshops.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>What happens during the first session? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>The first session is a chance to talk about what has brought you to counselling and what you're hoping for. There's no pressure — it's simply a starting point to understand your situation and how best to support you.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Is counselling confidential? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>Yes. What you share is treated as confidential, within the recognised professional and ethical guidelines that registered psychologists work under. Any limits to confidentiality can be explained to you directly.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Can faith be included in counselling? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>If you'd like it to be. Christian counselling is available for clients who want to include their faith and spiritual questions in the process. It's entirely optional and never assumed.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>How do I ask about a couples workshop? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>Simply get in touch and ask about upcoming workshop dates. Workshops are held in selected Johannesburg locations and online, and booking is essential as places are limited.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>How do I book a session? <span class="ico" aria-hidden="true"></span></summary>
+            <div class="faq__answer"><p>You can call, send a WhatsApp message, or email the practice, and we'll arrange a suitable time together. Taking that first step is often all it takes to get started.</p></div>
+          </details>
+        </div>
+
+        <p class="faq__disclaimer" role="note">
+          Website information is general and does not replace professional assessment, diagnosis or emergency care.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ FINAL BOOKING CTA -->
+    <section class="section booking-section" id="book" aria-labelledby="book-title">
+      <div class="container">
+        <div class="booking on-dark reveal">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="h2" id="book-title">Ready to take the first step?</h2>
+          <p class="lede booking__lede">
+            Reaching out can feel daunting. When you're ready, a short message is all it takes —
+            we'll respond and talk through how counselling could help.
+          </p>
+
+          <div class="booking__cta">
+            <!-- Primary route: the full enquiry form lives on the Contact page (Phase 3). Immediate contact methods below. -->
+            <a class="btn btn-oncream btn-lg" href="services.html#contact">Request a Session</a>
+            <a class="btn btn-secondary btn-lg" href="tel:+27722020901">Call 072 202 0901</a>
+          </div>
+
+          <div class="booking__methods">
+            <span class="booking__method">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 2 6a2 2 0 0 1 2-2z"/></g></svg>
+              <a href="tel:+27722020901">072 202 0901</a>
+            </span>
+            <!-- TODO(confirm): WhatsApp availability & number (assumed same as phone). -->
+            <span class="booking__method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>
+              <a href="https://wa.me/27722020901" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </span>
+            <span class="booking__method">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g></svg>
+              <a href="mailto:therapyandcounselling4u@gmail.com">Email the practice</a>
+            </span>
+          </div>
+
+          <!-- NON-EMERGENCY NOTICE — FW-002 §17. Exact wording & local crisis resources to be confirmed before launch. -->
+          <p class="notice" role="note">
+            <strong>This practice does not provide emergency or crisis support through the website.</strong>
+            If you are in immediate danger or require urgent assistance, please contact the appropriate local emergency service.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Therapy and Counselling — home" style="margin-bottom:var(--s4)">
+            <img class="footer__logo" src="assets/logo/therapy-logo-reverse.svg" width="980" height="270" alt="" />
+          </a>
+          <p class="footer__summary">Compassionate, professional counselling for individuals and couples in Edenvale and online.</p>
+        </div>
+
+        <nav aria-label="Footer">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Kim</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#workshops">Workshops</a></li>
+            <li><a href="#book">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#individual">Individual Counselling</a></li>
+            <li><a href="services.html#couples">Couples Counselling</a></li>
+            <li><a href="services.html#christian">Christian Counselling</a></li>
+            <li><a href="#workshops">Couples Workshops</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></g></svg>
+              <span>11 Columbus Avenue, Eastleigh, Edenvale</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 2 6a2 2 0 0 1 2-2z"/></g></svg>
+              <a href="tel:+27722020901">072 202 0901</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g></svg>
+              <a href="mailto:therapyandcounselling4u@gmail.com">therapyandcounselling4u@gmail.com</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></svg>
+              <span>Mon–Fri, 08:00–17:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Therapy and Counselling. All rights reserved.</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <!-- OPTIONAL credit — include only if approved by the client (FW-002 §16):
+             <span>Website by Forge Digital</span> -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
