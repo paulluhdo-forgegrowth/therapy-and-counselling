@@ -286,16 +286,27 @@ a:hover{ color:var(--ink); }
   max-width:365px;
   margin-inline:auto;
 }
-.workshop__media .media{
-  display:block;
+.workshop__media{
+  position:relative;
   width:100%;
-  height:auto;
+  max-width:365px;
+  margin-inline:auto;
 }
 
-.workshop__media img{
-  display:block;
+.workshop__media .media{
   width:100%;
+  aspect-ratio:1 / 1;
   height:auto;
+  padding-top:0;
+}
+
+.workshop__media .media > img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .workshop__chip{
   position:relative; left:-22px; top:28px; z-index:2; display:inline-flex; align-items:center; gap:9px;
