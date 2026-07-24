@@ -31,9 +31,20 @@ export async function onRequestPost(context) {
     } else {
       data = Object.fromEntries((await request.formData()).entries());
     }
-  } catch (_) {
-    return json({ ok: false, error: 'Invalid request.' }, 400);
-  }
+  } catch (error) {
+  console.error('Enquiry function exception', {
+    message: error instanceof Error ? error.message : String(error)
+  });
+
+  return json(
+    {
+      ok: false,
+      error: 'Delivery failed.',
+      diagnostic: error instanceof Error ? error.message : String(error)
+    },
+    502
+  );
+}
 
   // Honeypot: bots fill the hidden field. Pretend success, send nothing.
   if (data.company) return json({ ok: true });
@@ -79,20 +90,44 @@ export async function onRequestPost(context) {
     'Message:\n' + message + '\n';
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + env.RESEND_API_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ from, to, reply_to: email, subject, text })
-    });
-    if (!res.ok) return json({ ok: false, error: 'Delivery failed.' }, 502);
-    return json({ ok: true });
-  } catch (_) {
-    return json({ ok: false, error: 'Delivery failed.' }, 502);
-  }
+   const res = await fetch('https://api.resend.com/emails', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer ' + env.RESEND_API_KEY,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    from,
+    to,
+    reply_to: email,
+    subject,
+    text
+  })
+});
+
+const resendResponse = await res.text();
+
+if (!res.ok) {
+  console.error('Resend delivery failed', {
+    status: res.status,
+    response: resendResponse,
+    from,
+    to
+  });
+
+  return json(
+    {
+      ok: false,
+      error: 'Delivery failed.',
+      diagnostic: resendResponse
+    },
+    502
+  );
 }
+
+console.log('Enquiry delivered successfully', resendResponse);
+
+return json({ ok: true });
 
 // Reject other methods clearly.
 export const onRequestGet = () =>
