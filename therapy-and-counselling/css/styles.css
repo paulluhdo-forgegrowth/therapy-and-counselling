@@ -280,9 +280,25 @@ a:hover{ color:var(--ink); }
 
 /* ------------------------------------------------------------------ Workshop feature (emotive) */
 .workshop{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,5vw,80px); align-items:center; }
-.workshop__media{ position:relative; }
+.workshop__media{
+  position:relative;
+  width:100%;
+  max-width:365px;
+  margin-inline:auto;
+}
+.workshop__media .media{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.workshop__media img{
+  display:block;
+  width:100%;
+  height:auto;
+}
 .workshop__chip{
-  position:absolute; left:-22px; top:28px; z-index:2; display:inline-flex; align-items:center; gap:9px;
+  position:relative; left:-22px; top:28px; z-index:2; display:inline-flex; align-items:center; gap:9px;
   background:var(--card); border:1px solid var(--border); border-radius:14px; padding:11px 15px;
   box-shadow:var(--shadow); font-size:.9rem; font-weight:600; color:var(--ink);
 }
