@@ -22,25 +22,21 @@ const DEFAULT_FROM = 'Therapy & Counselling <onboarding@resend.dev>';
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  // Parse JSON or form-encoded
   let data;
-
   try {
-    const contentType = request.headers.get('content-type') || '';
-
-    if (contentType.includes('application/json')) {
+    const ct = request.headers.get('content-type') || '';
+    if (ct.includes('application/json')) {
       data = await request.json();
     } else {
       data = Object.fromEntries((await request.formData()).entries());
     }
-  } catch (error) {
-    console.error('Invalid enquiry request', error);
+  } catch (_) {
     return json({ ok: false, error: 'Invalid request.' }, 400);
   }
 
-  // Honeypot field
-  if (data.company) {
-    return json({ ok: true });
-  }
+  // Honeypot: bots fill the hidden field. Pretend success, send nothing.
+  if (data.company) return json({ ok: true });
 
   const name = String(data.name || '').trim();
   const email = String(data.email || '').trim();
@@ -49,118 +45,62 @@ export async function onRequestPost(context) {
   const topic = String(data.topic || '').trim();
 
   if (!name || !EMAIL_RE.test(email) || !message) {
-    return json(
-      { ok: false, error: 'Please complete the required fields.' },
-      422
-    );
+    return json({ ok: false, error: 'Please complete the required fields.' }, 422);
+  }
+  if (name.length > 120 || email.length > 160 || phone.length > 40 || message.length > 4000) {
+    return json({ ok: false, error: 'One or more fields are too long.' }, 422);
   }
 
-  if (
-    name.length > 120 ||
-    email.length > 160 ||
-    phone.length > 40 ||
-    message.length > 4000
-  ) {
-    return json(
-      { ok: false, error: 'One or more fields are too long.' },
-      422
-    );
+  // Optional basic rate limit / duplicate-submission guard (requires KV binding RATE_LIMIT).
+  if (env.RATE_LIMIT) {
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const key = 'rl:' + ip;
+    try {
+      if (await env.RATE_LIMIT.get(key)) {
+        return json({ ok: false, error: 'Please wait a moment before sending another message.' }, 429);
+      }
+      await env.RATE_LIMIT.put(key, '1', { expirationTtl: 45 });
+    } catch (_) { /* if KV fails, don't block a genuine enquiry */ }
   }
 
   if (!env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is missing');
-
-    return json(
-      {
-        ok: false,
-        error: 'Email delivery is not configured yet.'
-      },
-      503
-    );
+    return json({ ok: false, error: 'Email delivery is not configured yet.' }, 503);
   }
 
   const to = env.ENQUIRY_TO || DEFAULT_TO;
   const from = env.ENQUIRY_FROM || DEFAULT_FROM;
-
-  const subject = `Website enquiry${topic ? ` — ${topic}` : ''}`;
-
+  const subject = 'Website enquiry' + (topic ? ' \u2014 ' + topic : '');
   const text =
-    `New enquiry from the website\n\n` +
-    `Name: ${name}\n` +
-    `Email: ${email}\n` +
-    `Phone: ${phone || '—'}\n` +
-    `Topic: ${topic || '—'}\n\n` +
-    `Message:\n${message}\n`;
+    'New enquiry from the website\n\n' +
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + (phone || '\u2014') + '\n' +
+    'Topic: ' + (topic || '\u2014') + '\n\n' +
+    'Message:\n' + message + '\n';
 
   try {
-    const response = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Authorization': 'Bearer ' + env.RESEND_API_KEY,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        from,
-        to,
-        reply_to: email,
-        subject,
-        text
-      })
+      body: JSON.stringify({ from, to, reply_to: email, subject, text })
     });
-
-    const responseBody = await response.text();
-
-    if (!response.ok) {
-      console.error('Resend delivery failed', {
-        status: response.status,
-        response: responseBody,
-        from,
-        to
-      });
-
-      return json(
-        {
-          ok: false,
-          error: 'Delivery failed.',
-          diagnostic: responseBody
-        },
-        502
-      );
-    }
-
-    console.log('Enquiry delivered successfully', responseBody);
-
+    if (!res.ok) return json({ ok: false, error: 'Delivery failed.' }, 502);
     return json({ ok: true });
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : String(error);
-
-    console.error('Enquiry function exception', message);
-
-    return json(
-      {
-        ok: false,
-        error: 'Delivery failed.',
-        diagnostic: message
-      },
-      502
-    );
+  } catch (_) {
+    return json({ ok: false, error: 'Delivery failed.' }, 502);
   }
 }
 
+// Reject other methods clearly.
 export const onRequestGet = () =>
-  new Response('Method Not Allowed', {
-    status: 405,
-    headers: {
-      Allow: 'POST'
-    }
-  });
+  new Response('Method Not Allowed', { status: 405, headers: { Allow: 'POST' } });
 
-function json(body, status = 200) {
-  return new Response(JSON.stringify(body), {
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), {
     status,
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    headers: { 'Content-Type': 'application/json' }
   });
 }
